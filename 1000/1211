@@ -1,0 +1,21 @@
+#include <iostream>
+#include <map>
+#include <cmath>
+
+#define MOD 4294967296
+typedef long long ll;
+using namespace std;
+map<ll, ll> b;
+ll n, p, q;
+ll f(ll n) {
+    if(n == 0)
+        return 1;
+    if(b[n] != 0)
+        return b[n];
+    else
+        return b[n] = f(n/p) + f(n/q);
+}
+int main(){
+cin >> n >> p >> q;
+cout << f(n);
+}

@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+typedef long long ll;
+#define MAX 1000
+
+
+string a[MAX];
+
+int min(int a, int b){
+    return (a > b) ? b : a;
+}
+struct magic {
+    bool operator() (const int& lhs, const int& rhs) const
+    {return lhs > rhs;}
+};
+
+int main() {
+    int test;
+    cin >> test;
+    while(test--){
+        int q, k;
+        cin >> q >> k;
+        multiset<ll> st;
+        ll res = 0;
+        while (q--){
+            string c;
+            cin >> c;
+            if(c == "insert"){
+                ll n;
+                cin >> n;
+                st.insert(n);
+                res ^= n;
+            }
+            else{
+                auto a = st.begin();
+                while(st.size() > k){
+                    res ^= *a;
+                    st.erase(a);
+                    a = st.begin();
+                }
+                cout << res << endl;
+            }
+
+        }
+    }
+}

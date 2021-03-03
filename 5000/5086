@@ -1,0 +1,19 @@
+#include <iostream>
+#include <set> 
+
+using namespace std;
+
+int main()
+{
+   int t;
+   cin >> t;
+   set<string> st;
+   while(t--){
+       string temp;
+       cin >> temp;
+       st.insert(temp);
+   }
+   for(auto item : st){
+       cout << item << '\n';
+   }
+}

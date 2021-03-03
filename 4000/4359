@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+typedef long long ll;
+#define MAX 1000
+
+int test, n;
+string a[MAX];
+
+int main() {
+    cin >> test;
+    multiset<ll> st;
+    while(test--){
+        ll a;
+        cin >> a;
+        st.insert(a);
+    }
+    while(st.size() > 1){
+        ll a = *st.begin();
+        st.erase(st.begin());
+        ll b = *st.begin();
+        if(2 * a > b) {
+            st.erase(st.begin());
+            st.insert(2 * a);
+        }
+    }
+    cout << *st.begin() << endl;
+}

@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+typedef long long ll;
+#define MAX 1000
+
+
+string a[MAX];
+
+int main() {
+    int minu, n;
+    map<char, pair<int, bool>> a;
+    while(cin >> minu && minu != -1) {
+        char problem;
+        string answer;
+        cin >> problem >> answer;
+        if(!a[problem].second){
+            if(answer == "wrong")
+                a[problem].first += 20;
+               // a[problem].second = true;
+            if(answer == "right") {
+                a[problem].second = true;
+                a[problem].first += minu;
+            }
+        }
+    }
+    int problem = 0, time = 0;
+    for(auto i : a){
+        if(i.second.second){
+            problem++;
+            time += i.second.first;
+        }
+    }
+    cout << problem << ' ' << time;
+}

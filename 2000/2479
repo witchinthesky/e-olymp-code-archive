@@ -1,0 +1,36 @@
+#include <iostream>
+#include <stack>
+
+int n;
+using namespace std;
+
+bool check(string a){
+    stack<char> temp;
+    for(int i : a){
+        if(i == '(' || i == '[')
+            temp.push(i);
+        else if (!temp.empty()) {
+            if(temp.top() == '(' && i == ')'){
+                temp.pop();
+            }
+            else if(temp.top() == '[' && i == ']'){
+                temp.pop();
+            }
+            else {
+                return false;
+            }
+        }
+        else return false;
+    }
+    return temp.empty();
+}
+
+int main(){
+    cin >> n;
+    string s;
+    getline(cin, s);
+    while(n--){
+        getline(cin, s);
+        cout << (check(s) ? "Yes\n" : "No\n");
+    }
+}

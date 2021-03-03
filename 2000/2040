@@ -1,0 +1,27 @@
+#include <iostream>
+#include <map>
+#include <algorithm>
+
+
+#define MAX 200001
+
+using namespace std;
+
+int main(){
+    string a, b;
+    while(getline(cin, a) && getline(cin, b)){
+        map<char, int> temp;
+        for(auto i : a){
+            temp[i]++;
+        }
+        a = "";
+        for(auto i : b){
+            if(temp[i] > 0) {
+                temp[i]--;
+                a += i;
+            }
+        }
+        sort(a.begin(), a.end());
+        cout << a << endl;
+    }
+}
